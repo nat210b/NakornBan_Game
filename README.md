@@ -1,6 +1,14 @@
 # nakornban_game
 
-This template should help get you started developing with Vue 3 in Vite.
+CS-Files (แฟ้มลับคดีปริศนา) - Realtime social deduction web party game.
+
+## Docs
+- `docs/MVP_SPEC.md`
+- `docs/BACKLOG.md`
+- `docs/REALTIME_EVENTS.md`
+- `docs/FRONTEND_STRUCTURE.md`
+- `docs/TECH_DECISIONS.md`
+- `docs/ROADMAP.md`
 
 ## Recommended IDE Setup
 
