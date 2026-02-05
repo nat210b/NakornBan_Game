@@ -4,11 +4,11 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <div class="app">
-    <nav class="nav">
+    <!-- <nav class="nav">
       <RouterLink class="nav__link" to="/login">Login</RouterLink>
       <RouterLink class="nav__link" to="/signup">Signup</RouterLink>
     </nav>
-
+ -->
 
     <RouterView />
   </div>
@@ -16,7 +16,8 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <style scoped>
 .app {
-  min-height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
 }
 
 .nav {

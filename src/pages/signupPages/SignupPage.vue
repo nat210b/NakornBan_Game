@@ -2,72 +2,101 @@
 
 <template>
   <section class="page">
-    <header class="page__header">
-      <p class="page__eyebrow">Join us</p>
-      <h1 class="page__title">Create account</h1>
-      <p class="page__subtitle">Set up your profile in a minute.</p>
-    </header>
+    <div class="scene">
+      <header class="page__header">
+        <p class="page__eyebrow">CS-Files</p>
+        <h1 class="page__title">Case Intake</h1>
+        <p class="page__subtitle">Register as an investigator to access the archive.</p>
+      </header>
 
-    <form class="card" aria-label="Signup form">
-      <label class="field">
-        <span class="field__label">Full name</span>
-        <input class="field__input" type="text" name="name" autocomplete="name" required />
-      </label>
+      <form class="card" aria-label="Signup form">
+        <label class="field">
+          <span class="field__label">Investigator name</span>
+          <input class="field__input" type="text" name="name" autocomplete="name" required />
+        </label>
 
-      <label class="field">
-        <span class="field__label">Email</span>
-        <input class="field__input" type="email" name="email" autocomplete="email" required />
-      </label>
+        <label class="field">
+          <span class="field__label">Case ID (Email)</span>
+          <input class="field__input" type="email" name="email" autocomplete="email" required />
+        </label>
 
-      <label class="field">
-        <span class="field__label">Password</span>
-        <input class="field__input" type="password" name="password" autocomplete="new-password" />
-      </label>
+        <label class="field">
+          <span class="field__label">Cipher key</span>
+          <input class="field__input" type="password" name="password" autocomplete="new-password" />
+        </label>
 
-      <button class="button" type="submit">Create account</button>
-    </form>
+        <button class="button" type="submit">Open Case File</button>
+      </form>
+    </div>
   </section>
 </template>
 
 <style scoped>
 .page {
   min-height: 100vh;
-  padding: 56px 20px;
+  padding: 64px 20px;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, #f7f0eb 0%, #efe1d6 45%, #dcc5b5 100%);
-  color: #261a12;
-  font-family: 'Playfair Display', 'Times New Roman', serif;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 214, 134, 0.16), transparent 50%),
+    radial-gradient(circle at 80% 0%, rgba(96, 140, 172, 0.2), transparent 45%),
+    linear-gradient(135deg, #121111 0%, #1e1b18 50%, #24211d 100%);
+  color: #f5efe8;
+  font-family: 'Bitter', 'Georgia', serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.scene {
+  width: min(440px, 92vw);
+  display: grid;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"320\" height=\"320\" viewBox=\"0 0 320 320\"><g fill=\"none\" stroke=\"%233a342e\" stroke-width=\"1\" stroke-opacity=\"0.4\"><path d=\"M0 160h320M160 0v320\"/></g></svg>')
+    center/320px 320px;
+  opacity: 0.2;
+  pointer-events: none;
 }
 
 .page__header {
   text-align: center;
-  margin-bottom: 28px;
 }
 
 .page__eyebrow {
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.75rem;
-  margin: 0 0 8px;
+  letter-spacing: 0.32em;
+  font-size: 0.7rem;
+  margin: 0 0 10px;
+  color: #d8c8b4;
 }
 
 .page__title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin: 0 0 8px;
+  font-size: clamp(2.1rem, 6vw, 3rem);
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .page__subtitle {
   margin: 0;
-  color: #5a4538;
+  color: #c8b8a5;
 }
 
 .card {
-  width: min(420px, 92vw);
   padding: 28px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 18px 40px rgba(38, 26, 18, 0.2);
+  border-radius: 18px;
+  background: rgba(18, 16, 14, 0.86);
+  border: 1px solid rgba(210, 187, 158, 0.3);
+  box-shadow:
+    0 24px 50px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 232, 200, 0.08);
   display: grid;
   gap: 18px;
 }
@@ -78,35 +107,39 @@
 }
 
 .field__label {
-  font-size: 0.9rem;
-  color: #4b3629;
+  font-size: 0.85rem;
+  color: #d3c2ad;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .field__input {
   padding: 12px 14px;
   border-radius: 12px;
-  border: 1px solid #d1b9a6;
-  background: #fff7f0;
+  border: 1px solid rgba(210, 187, 158, 0.5);
+  background: rgba(28, 24, 20, 0.8);
+  color: #f8f2ea;
   font-size: 1rem;
 }
 
 .field__input:focus {
-  outline: 2px solid #b56842;
+  outline: 2px solid #cda76a;
   border-color: transparent;
+  box-shadow: 0 0 0 4px rgba(205, 167, 106, 0.2);
 }
 
 .button {
   padding: 12px 16px;
   border-radius: 999px;
   border: none;
-  background: #b56842;
-  color: #fff7f0;
+  background: linear-gradient(120deg, #cda76a 0%, #a2763c 100%);
+  color: #1f1b16;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
 }
 
 .button:hover {
-  filter: brightness(1.05);
+  filter: brightness(1.08);
 }
 </style>

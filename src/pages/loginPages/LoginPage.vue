@@ -1,113 +1,101 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const activeForm = ref<'signin' | 'signup'>('signin')
+// const bgUrl = new URL('@/assets/img/bg.png', import.meta.url).href
+
+</script>
 
 <template>
-  <section class="page">
-    <header class="page__header">
-      <p class="page__eyebrow">Welcome back</p>
-      <h1 class="page__title">Login</h1>
-      <p class="page__subtitle">Sign in to continue to your account.</p>
-    </header>
+  <div class="w-screen h-screen bg-cover bg-center" style="background-image: url('/img/bg.png');">
+    <div class="grid grid-cols-2 w-screen h-screen">
 
-    <form class="card" aria-label="Login form">
-      <label class="field">
-        <span class="field__label">Email</span>
-        <input class="field__input" type="email" name="email" autocomplete="email" required />
-      </label>
+      <div class="">
+        <div class="flex h-full items-end justify-start p-20">
+          <div class="text-left">
+            <h3 class="text-white text-[32px] font-bold text-shadow-md">CS Files:</h3>
+            <span class="text-[28px] font-bold text-yellow-500">Thai Edition</span>
+            <p class="text-gray-300">Murder in Hong Kong. Step into the role of the investigator.
+              Analyze the evidence, find the murderer, and bring justice to
+              the streets.</p>
+          </div>
+        </div>
+      </div>
+      <div class=" flex flex-col items-start justify-center text-start p-20"
+        style="background-color: #101622; color: white;">
+        <span class="text-sm text-blue-700 font-bold">Royal Thai Police Department</span>
+        <span class="text-2xl font-bold">Investigator Access</span>
+        <span class="text-xs text-gray-300/50">Please Verify your identity to access the case files</span>
+        <div class="mt-6 flex flex-row gap-6 border-b border-gray-500/40 w-full text-[12px]">
+          <button type="button" class="pb-2 text-sm tracking-wider uppercase font-bold"
+            :class="activeForm === 'signin' ? 'border-b-2 border-blue-600 text-white ' : 'text-gray-300'"
+            @click="activeForm = 'signin'">
+            <span :class="activeForm === 'signin' ? 'font-extrabold' : ''">Sign In</span>
+          </button>
+          <button type="button" class="pb-2 text-sm tracking-wider uppercase text-gray-300 "
+            :class="activeForm === 'signup' ? 'border-b-2 border-blue-600 text-white ' : 'text-gray-300'"
+            @click="activeForm = 'signup'">
+            <span :class="activeForm === 'signup' ? 'font-extrabold' : ''">New Recruit</span>
+          </button>
+        </div>
 
-      <label class="field">
-        <span class="field__label">Password</span>
-        <input
-          class="field__input"
-          type="password"
-          name="password"
-          autocomplete="current-password"
-          required
-        />
-      </label>
+        <form v-if="activeForm === 'signin'" class="mt-6 w-full space-y-4">
+          <div class="flex flex-col gap-2">
+            <label class="text-xs uppercase tracking-wider text-gray-300">Case ID (Email)</label>
+            <input class="rounded-md border border-gray-500/40 bg-transparent px-3 py-2" type="email" />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="text-xs uppercase tracking-wider text-gray-300">Cipher Key</label>
+            <input class="rounded-md border border-gray-500/40 bg-transparent px-3 py-2" type="password" />
+          </div>
+          <button class="w-full cursor-pointerrounded-md bg-blue-800 text-white  px-4 py-2 font-bold " type="submit"
+            style="border-radius: 10px;">
+            <span class="font-bold">Authenticate</span>
+          </button>
+        </form>
 
-      <button class="button" type="submit">Sign in</button>
-    </form>
-  </section>
+        <form v-else class="mt-6 w-full space-y-4">
+          <div class="flex flex-col gap-2">
+            <label class="text-xs uppercase tracking-wider text-gray-300">Investigator Name</label>
+            <input class="rounded-md border border-gray-500/40 bg-transparent px-3 py-2" type="text" />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="text-xs uppercase tracking-wider text-gray-300">Case ID (Email)</label>
+            <input class="rounded-md border border-gray-500/40 bg-transparent px-3 py-2" type="email" />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="text-xs uppercase tracking-wider text-gray-300">Cipher Key</label>
+            <input class="rounded-md border border-gray-500/40 bg-transparent px-3 py-2" type="password" />
+          </div>
+          <button class="w-full cursor-pointerrounded-md bg-blue-800 text-white  px-4 py-2 font-bold " type="submit"
+            style="border-radius: 10px;">
+            <span class="font-bold">Authenticate</span>
+          </button>
+        </form>
+        <hr class="my-6 border-gray-500/40 w-full" />
+        <div class="w-full text-center">
+          <div class="flex items-center gap-4 text-xs uppercase tracking-wider text-gray-400">
+            <span class="h-px flex-1 bg-gray-500/40"></span>
+            <span>Or continue with</span>
+            <span class="h-px flex-1 bg-gray-500/40"></span>
+          </div>
+          <div class="mt-4 flex gap-3">
+            <!-- Social login buttons can be added here -->
+            <button type="button"
+              class="flex-1 cursor-pointer rounded-md border border-gray-500/40 bg-white/5 px-4 py-2 text-sm font-semibold text-gray-200 transition hover:border-yellow-400 hover:text-yellow-200">
+              Google
+            </button>
+            <button type="button"
+              class="flex-1 cursor-pointer rounded-md border border-gray-500/40 bg-white/5 px-4 py-2 text-sm font-semibold text-gray-200 transition hover:border-yellow-400 hover:text-yellow-200">
+              Facebook
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
 </template>
 
-<style scoped>
-.page {
-  min-height: 100vh;
-  padding: 56px 20px;
-  display: grid;
-  place-items: center;
-  background: radial-gradient(circle at top, #f5f2ea 0%, #e9e3d8 45%, #d7cfc1 100%);
-  color: #1f1b16;
-  font-family: 'Bitter', 'Georgia', serif;
-}
-
-.page__header {
-  text-align: center;
-  margin-bottom: 28px;
-}
-
-.page__eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.75rem;
-  margin: 0 0 8px;
-}
-
-.page__title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin: 0 0 8px;
-}
-
-.page__subtitle {
-  margin: 0;
-  color: #4b4033;
-}
-
-.card {
-  width: min(380px, 92vw);
-  padding: 28px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.84);
-  box-shadow: 0 20px 45px rgba(31, 27, 22, 0.18);
-  display: grid;
-  gap: 18px;
-}
-
-.field {
-  display: grid;
-  gap: 6px;
-}
-
-.field__label {
-  font-size: 0.9rem;
-  color: #42362b;
-}
-
-.field__input {
-  padding: 12px 14px;
-  border-radius: 12px;
-  border: 1px solid #c7b7a5;
-  background: #fffaf4;
-  font-size: 1rem;
-}
-
-.field__input:focus {
-  outline: 2px solid #a2763c;
-  border-color: transparent;
-}
-
-.button {
-  padding: 12px 16px;
-  border-radius: 999px;
-  border: none;
-  background: #a2763c;
-  color: #fffaf4;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.button:hover {
-  filter: brightness(1.05);
-}
-</style>
+<style scoped></style>

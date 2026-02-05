@@ -1,23 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginPage from '@/pages/loginPages/LoginPage.vue'
-import SignupPage from '@/pages/signupPages/SignupPage.vue'
+import LobbyPage from '@/pages/lobbyPages/LobbyPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      redirect: '/login',
+      redirect: '/register',
     },
     {
-      path: '/login',
+      path: '/register',
       name: 'login',
       component: LoginPage,
     },
     {
-      path: '/signup',
-      name: 'signup',
-      component: SignupPage,
+      path: '/lobby',
+      name: 'lobby',
+      component: LobbyPage,
     },
   ],
 })
