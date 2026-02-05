@@ -9,6 +9,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <RouterLink class="nav__link" to="/signup">Signup</RouterLink>
     </nav>
 
+
     <RouterView />
   </div>
 </template>
